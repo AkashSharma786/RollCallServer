@@ -1,8 +1,8 @@
 const mongodb = require("mongodb");
-const getEmpCollection = require("./db_controller");
+const {getEmployeesCollection }= require("./db_controller");
 
 
-let employees =  getEmpCollection()
+let employees =  getEmployeesCollection()
 .then((collection) => {
     employees = collection;
 })

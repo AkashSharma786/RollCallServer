@@ -7,6 +7,11 @@ const uri = "mongodb+srv://akash:dVW7xKvVgSqhLRHI@cluster0.nt88y.mongodb.net/?re
 const client = new MongoClient(uri);
 
 
+async function getComany() {
+    const connection = await client.connect();
+    return connection.db("Company").collection("company");
+    
+}
 
 async function getEmployeesCollection() {
 
@@ -23,4 +28,4 @@ async function getEmployeesCollection() {
 
 
 
-module.exports =  getEmployeesCollection;
+module.exports =  {getEmployeesCollection, getComany};

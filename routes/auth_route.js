@@ -1,10 +1,10 @@
 const express = require('express');
+const {validateDetails} = require('../auth_controller/controller');
 
 const router = express.Router();
 
-router.route('/login').get((req, res) => {
-    res.send('Login Page');
-});
+router.route('/login').get(validateDetails);
+
 router.route('/register').get((req, res) => {
     res.send('Register Page');
 }

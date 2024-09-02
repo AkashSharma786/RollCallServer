@@ -1,22 +1,23 @@
 const {getEmployees, getEmployeeById} = require("../database/employees_query");
 
-const getAllEmployees =(req, res)  => {
+let  getAllEmployees =async (req, res)  => {
 
-         getEmployees()
-         .then((result)=>{
+        
+         try{
+            const result = await getEmployees();
             if(result.length == 0)
                 res.status(404).send({error: "not found!"});
             else
             res.status(200).send(result);
             
-         })
-         .catch((e)=>{
-            res.status(404).json({error: "not found!"});
+         }catch{
+            
+            res.status(500).json({error: "Internal Server Error"});
             res.end();
-         });
+         }
 };
 
-const employeeDetail =(req, res)=>{
+const employeeDetail = async (req, res)=>{
   
     const empId = req.params.empId;
     getEmployeeById(empId).then((result)=>{
@@ -36,5 +37,7 @@ const employeeDetail =(req, res)=>{
    
 
 }
+
+
 
 module.exports = {getAllEmployees, employeeDetail};

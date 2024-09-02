@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const {getAllEmployees, employeeDetail} = require('../admin_controller/controller');
 
 
-router.route('/employees').get((req, res) => {
-    res.send('allEmployees');
-});
+router.route('/employees').get(getAllEmployees);
 
-router.route('/:empId').get((req, res) => {
-    res.send('Idividual Employee');
-}
-);
+router.route('/:empId').get(employeeDetail);
+
+router.route('/employees/query').get((req, res)=>{
+    res.send('Query for all Employees');
+})
 
 router.route('/:empId/query').get((req, res) => {
     res.send('Query for individual Employee');

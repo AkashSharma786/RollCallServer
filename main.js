@@ -1,5 +1,5 @@
 const express = require('express');
-const {getEmployees , getEmployeeById} = require('./database/employees_query');
+const {getEmployeeById} = require('./database/employees_query');
 const authRoute = require('./routes/auth_route');
 const employeeRoute = require('./routes/employee_route');
 const adminRoute = require('./routes/admin_route');

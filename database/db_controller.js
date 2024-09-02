@@ -1,3 +1,4 @@
+const e = require("express");
 const { MongoClient } = require("mongodb");
 
 // Replace the uri string with your connection string.
@@ -7,4 +8,19 @@ const client = new MongoClient(uri);
 
 
 
-module.exports =  client;
+async function getEmployeesCollection() {
+
+    const connection = await client.connect();
+    //console.log(connection.db("Company").collection("employees"));
+    
+    return  connection.db("Company").collection("employees");
+   
+}
+
+
+
+
+
+
+
+module.exports =  getEmployeesCollection;

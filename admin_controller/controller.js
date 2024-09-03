@@ -4,13 +4,14 @@ let  getAllEmployees =async (req, res)  => {
 
         
          try{
-            const result = await getEmployees();
+            const result = await getEmployees(0, 7 );
             if(result.length == 0)
                 res.status(404).send({error: "not found!"});
             else
             res.status(200).send(result);
             
-         }catch{
+         }catch (e){
+           console.log(e);
             
             res.status(500).json({error: "Internal Server Error"});
             res.end();

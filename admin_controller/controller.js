@@ -4,7 +4,7 @@ let  getAllEmployees =async (req, res)  => {
 
         
          try{
-            const result = await getEmployees(0, 7 );
+            const result = await getEmployees(0, 2 );
             if(result.length == 0)
                 res.status(404).send({error: "not found!"});
             else

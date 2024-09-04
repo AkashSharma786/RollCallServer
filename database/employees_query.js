@@ -8,6 +8,8 @@ let employees =  getEmployeesCollection()
 })
 .catch((e)=>{console.log(e);});
 
+
+
 async function getEmployees( id  = 0, includeField = 8) {
 
     try {
@@ -67,6 +69,38 @@ async function getEmployeeById(id){
     }
 }
 
+async function addEmployee(data){
+    try {
+        await employees;
+        await employees.insertOne(data);
+    }
+    catch (e) {
+        console.log("Error in addEmployee");
+        //console.error(e);
+    }
+}
+
+async function updateEmployee(id, data){
+    try {
+        await employees;
+        await employees.updateOne({EmployeeId: id}, { $set: data });
+    }
+    catch (e) {
+        console.log("Error in updateEmployee");
+        //console.error(e);
+    }
+}
+
+async function deleteEmployee(id){
+    try {
+        await employees;
+        await employees.deleteOne({EmployeeId: id});
+    }
+    catch (e) {
+        console.log("Error in deleteEmployee");
+        //console.error(e);
+    }
+}
 
 
 module.exports = { getEmployees, getEmployeeById};

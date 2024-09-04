@@ -1,14 +1,12 @@
 const express = require('express');
+const {checkinReq, checkoutReq } = require('../employee_controller/controller');
 const router = express.Router();
 
 
-router.route('/checkin').get((req, res) => {
-    res.send('checkin Page');
-});
-router.route('/checkout').get((req, res) => {
-    res.send('checout Page');
-}
-);
+router.route('/checkin').post(checkinReq);
+
+router.route('/checkout').post(checkoutReq);
+
 router.route('/attendance-histroy').get((req, res) => {
     res.send('Attendace Histroy Page');
 

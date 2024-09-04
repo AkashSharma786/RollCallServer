@@ -6,6 +6,18 @@ const uri = "mongodb+srv://akash:dVW7xKvVgSqhLRHI@cluster0.nt88y.mongodb.net/?re
 
 const client = new MongoClient(uri);
 
+async function getTempCheckin() {
+    const connection = await client.connect();
+    return connection.db("Company").collection("tempCheckin");
+    
+}
+
+async function getAttendance() {
+    const connection = await client.connect();
+    return connection.db("Company").collection("attendance");
+    
+}
+
 
 async function getComany() {
     const connection = await client.connect();
@@ -28,4 +40,4 @@ async function getEmployeesCollection() {
 
 
 
-module.exports =  {getEmployeesCollection, getComany};
+module.exports =  {getEmployeesCollection, getComany, getAttendance, getTempCheckin};

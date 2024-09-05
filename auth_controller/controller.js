@@ -1,4 +1,5 @@
 const {login , register} = require('../database/auth_query');
+const {isValidEmail, isValidContact, isValidLocation} = require('../utils/validator');
 
 const validateDetails = async (req, res) => {
     console.log("Called");
@@ -47,24 +48,8 @@ const registerAdmin = async (req, res) => {
         longitude != undefined &&
         latitude != undefined );
 
-    const isValidContact = (isValidfields && typeof(contact) === "number" &&
-                         contact >= 1000000000 && contact <= 9999999999 &&
-                          contact.toString().length == 10);
 
-                         
-
-    const isValidEmail = (isValidfields && email.includes('@') &&
-                             email.includes('mail.com') && email.length > 5 &&
-                              email.length < 30 );
-                             
-
-    const isValidLocation = (isValidfields && typeof(longitude) === 'number' &&
-                             typeof(latitude) === 'number' &&
-                             latitude > 0 && latitude < 90 &&
-                             longitude > 0 && longitude < 180);
-                            
-
-    const isValidRequest = (isValidfields && isValidContact && isValidEmail && isValidLocation);
+    const isValidRequest = (isValidfields && isValidContact(contact) && isValidEmail(email) && isValidLocation(longitude, latitude));
   
     
     if(isValidRequest){

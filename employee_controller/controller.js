@@ -35,4 +35,6 @@ const checkoutReq = async (req, res) => {
    
 }
 
+
+
 module.exports = {checkinReq, checkoutReq};

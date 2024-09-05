@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route('/login').get(validateDetails);
 
-router.route('/register').get(registerAdmin);
+router.route('/register').post(registerAdmin);
 
 
 router.route('/forgot-password').get((req, res) => {

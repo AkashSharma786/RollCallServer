@@ -9,6 +9,11 @@ router.route('/checkout').post(checkoutReq);
 
 router.route('/attendance-histroy').get((req, res) => {
     res.send('Attendace Histroy Page');
+    
+
+});
+
+router.route('/attendance-histroy/query').get((req, res) => {
 
 });
 

@@ -68,7 +68,7 @@ async function checkin(empId) {
 
 }
 
-async function getAttendanceAll(startDate , endDate) {
+async function getAttendanceAll(startDate , endDate, limit) {
     try {
 
     }

@@ -70,6 +70,9 @@ async function getEmployeeById(id){
 }
 
 async function addEmployee(data){
+
+    console.log(data);
+    
     try {
         await employees;
         await employees.insertOne(data);
@@ -93,8 +96,8 @@ async function updateEmployee(id, data){
 
 async function deleteEmployee(id){
     try {
-        await employees;
-        await employees.deleteOne({EmployeeId: id});
+       await employees;
+       return await employees.deleteOne({employeeId: id});
     }
     catch (e) {
         console.log("Error in deleteEmployee");
@@ -103,4 +106,4 @@ async function deleteEmployee(id){
 }
 
 
-module.exports = { getEmployees, getEmployeeById};
+module.exports = { getEmployees, getEmployeeById, addEmployee, updateEmployee, deleteEmployee };
